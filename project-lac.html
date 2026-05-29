@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaC - Flavien CAYLA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            /* White */
+            --secondary-color: #94a3b8;
+            /* Gray */
+            --accent-color: #475569;
+            /* Dark Gray */
+            --bg-color: #000000;
+            /* Pure Black */
+        }
+
+        .project-details {
+            padding-top: 120px;
+        }
+
+        .project-hero {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            background: #000;
+        }
+
+        .project-hero video {
+            width: 100%;
+            display: block;
+        }
+
+        .project-info {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            color: var(--primary-color);
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .project-info {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+        <div class="globe globe-3"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo"><span class="logo-f">F</span>C.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#projects">Projets</a></li>
+            <li><a href="index.html#cv">CV</a></li>
+            <li><a href="index.html#contact" class="btn-contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="section project-details">
+        <div class="container">
+            <a href="index.html#projects" class="back-btn"><i class="fas fa-arrow-left"></i> Retour aux projets</a>
+
+            <div class="project-hero">
+                <video controls autoplay muted loop>
+                    <source src="12_CAYLA_Flavien_LaC.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
+            </div>
+
+            <div class="project-info">
+                <div>
+                    <h1 class="section-title" style="text-align: left; margin-bottom: 1rem;">LaC <span
+                            class="gradient-text">Project</span></h1>
+                    <p class="subtitle" style="margin: 0 0 2rem 0; text-align: left; opacity: 1;">Vidéo de présentation.
+                    </p>
+
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                        Découvrez le projet LaC à travers cette vidéo de présentation détaillée.
+                    </p>
+                </div>
+                <div>
+                    <div class="project-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom: 1rem;">Infos Projet</h3>
+                        <ul style="list-style: none; color: var(--text-muted); line-height: 2;">
+                            <li><strong>Type:</strong> Vidéo / Motion</li>
+                            <li><strong>Année:</strong> 2024</li>
+                        </ul>
+                        <div class="tags" style="margin-top: 1.5rem;">
+                            <span>Vidéo</span>
+                            <span>Montage</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Flavien CAYLA</div>
+                <p class="copyright">&copy; 2026 Flavien CAYLA. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

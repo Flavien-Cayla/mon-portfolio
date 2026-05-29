@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créations Photoshop - Flavien CAYLA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            /* Blue */
+            --secondary-color: #06b6d4;
+            /* Cyan */
+            --accent-color: #1d4ed8;
+            /* Dark Blue */
+            --bg-color: #0c1524;
+            /* Dark Blue/Black bg */
+        }
+
+        body {
+            animation: revealRotate 1s ease-out forwards;
+        }
+
+        .project-details {
+            padding-top: 120px;
+        }
+
+        .col-span-2 {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 768px) {
+            .col-span-2 {
+                grid-column: span 1;
+            }
+        }
+
+        .gallery-grid {
+            column-count: 3;
+            column-gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                column-count: 1;
+            }
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 2rem;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .caption {
+            padding: 1.5rem;
+            background: rgba(15, 7, 21, 0.9);
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .caption {
+            transform: translateY(0);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            color: var(--primary-color);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+        <div class="globe globe-3"></div>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo" style="text-decoration: none;"><span class="logo-f">F</span>C.</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#projects">Projets</a></li>
+            <li><a href="index.html#cv">CV</a></li>
+            <li><a href="index.html#contact" class="btn-contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="section project-details">
+        <div class="container">
+            <a href="index.html#projects" class="back-btn"><i class="fas fa-arrow-left"></i> Retour aux projets</a>
+
+            <h1 class="section-title">Galerie <span class="gradient-text">Photoshop</span></h1>
+            <p class="subtitle">Une collection de mes créations graphiques et retouches photo.</p>
+
+            <div class="gallery-grid">
+
+                <!-- Creation 1 -->
+                <div class="gallery-item">
+                    <img src="imagePS/playstation.jpg" alt="Création Playstation">
+                    <div class="caption">
+                        <h3>Playstation Design</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Composition créative et jeu de lumières.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Creation 2 -->
+                <div class="gallery-item col-span-2">
+                    <img src="imagePS/Finale LDC-1.jpg" alt="Finale LDC">
+                    <div class="caption">
+                        <h3>Finale LDC</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Affiche événementielle sportive.</p>
+                    </div>
+                </div>
+
+                <!-- Creation 3 -->
+                <div class="gallery-item">
+                    <img src="imagePS/Legende.jpg" alt="Légende">
+                    <div class="caption">
+                        <h3>Légende</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Montage photo artistique.</p>
+                    </div>
+                </div>
+
+                <!-- Creation 4 -->
+                <div class="gallery-item">
+                    <img src="imagePS/AnnaFreud_Francais.jpg" alt="Anna Freud">
+                    <div class="caption">
+                        <h3>Anna Freud</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Mise en page et design.</p>
+                    </div>
+                </div>
+
+                <!-- Creation 5 -->
+                <div class="gallery-item">
+                    <img src="imagePS/affiche_asso_requin.jpg" alt="Affiche Requin">
+                    <div class="caption">
+                        <h3>Association Requin</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Affiche de sensibilisation.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Flavien CAYLA</div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/flavien-cayla-9aa9b92a9" target="_blank"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="#" onclick="showContact('flactori@gmail.com'); return false;"><i
+                            class="fas fa-envelope"></i></a>
+                    <a href="#" onclick="showContact('06 47 38 80 89'); return false;"><i class="fas fa-phone"></i></a>
+                </div>
+                <p class="copyright">&copy; 2026 Flavien CAYLA. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

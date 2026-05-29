@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavien CAYLA | Portfolio</title>
+    <meta name="description" content="Portfolio de Flavien CAYLA - Découvrez mes projets et mon parcours.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+        <div class="globe globe-3"></div>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo" style="text-decoration: none;"><span class="logo-f">F</span>C.</a>
+        <ul class="nav-links">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#contact" class="btn-contact">Contact</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <span class="greeting">Bonjour, je suis</span>
+            <h1>Flavien <span class="gradient-text">CAYLA</span></h1>
+            <p class="subtitle">Développeur & Créatif Passionné</p>
+            <div class="cta-group">
+                <a href="#projects" class="btn btn-primary">Voir mes projets</a>
+                <a href="#cv" class="btn btn-secondary">Mon Parcours</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow-scroll">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Mes <span class="gradient-text">Projets</span></h2>
+            <div class="projects-grid">
+                <!-- Projet 1 -->
+                <article class="project-card" data-tilt onclick="window.location.href='project-ember.html'"
+                    style="cursor: pointer;">
+                    <div class="project-image">
+                        <img src="image/Capture d'écran 2026-01-16 220119.png" alt="Ember Beer Capture Site"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <div class="project-content">
+                        <h3>Ember Beer</h3>
+                        <p>Site vitrine immersif pour une marque de bière artisanale. Cliquez pour voir les détails.</p>
+                        <div class="tags">
+                            <span>HTML/CSS</span>
+                            <span>GSAP</span>
+                            <span>Design</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="project-ember.html"><i class="fas fa-eye"></i> Voir le projet</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 2: Premiere Pro -->
+                <article class="project-card" data-tilt onclick="window.location.href='project-premiere.html'"
+                    style="cursor: pointer;">
+                    <div class="project-image">
+                        <img src="videoPR/premierPro.jpg" alt="Premiere Pro"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <div class="project-content">
+                        <h3>Vidéo</h3>
+                        <div class="project-card-subtitle">sur Premiere Pro</div>
+                        <p>Découvrez mes montages vidéos : LaC, Arènes, et plus.</p>
+                        <div class="tags">
+                            <span>Montage</span>
+                            <span>Premiere Pro</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="project-premiere.html"><i class="fas fa-film"></i> Voir les vidéos</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-tilt onclick="window.location.href='project-photoshop.html'"
+                    style="cursor: pointer;">
+                    <div class="project-image">
+                        <img src="imagePS/Photoshop.jpg" alt="Photoshop Art"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <div class="project-content">
+                        <h3>Montage</h3>
+                        <div class="project-card-subtitle">sur Photoshop</div>
+                        <p>Galerie de montages photos, affiches et designs créatifs.</p>
+                        <div class="tags">
+                            <span>Photoshop</span>
+                            <span>Design</span>
+                            <span>Art</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="project-photoshop.html"><i class="fas fa-images"></i> Voir la galerie</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Nouveau Projet 4: After Effects -->
+                <article class="project-card hidden-project" data-tilt style="display: none;"
+                    onclick="window.location.href='project-aftereffects.html'" style="cursor: pointer;">
+                    <div class="project-image">
+                        <img src="VideoAe/AfterEffect.png" alt="After Effects"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <div class="project-content">
+                        <h3>Montage et effets spéciaux</h3>
+                        <div class="project-card-subtitle">sur After Effects</div>
+                        <p>Motion design et effets spéciaux.</p>
+                        <div class="tags">
+                            <span>After Effects</span>
+                            <span>VFX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="project-aftereffects.html"><i class="fas fa-magic"></i> Voir les effets</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Nouveau Projet 5: Illustrator -->
+                <article class="project-card hidden-project" data-tilt style="display: none;"
+                    onclick="window.location.href='project-illustrator.html'" style="cursor: pointer;">
+                    <div class="project-image">
+                        <img src="imageAI/illustrator.jpg" alt="Illustrator Art"
+                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <div class="project-content">
+                        <h3>Illustration</h3>
+                        <div class="project-card-subtitle">sur Illustrator</div>
+                        <p>Design graphique et vectoriel.</p>
+                        <div class="tags">
+                            <span>Illustrator</span>
+                            <span>Vectoriel</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="project-illustrator.html"><i class="fas fa-pen-nib"></i> Voir les designs</a>
+                        </div>
+                    </div>
+                </article>
+
+
+            </div>
+
+            <div class="view-more-container" style="text-align: center; margin-top: 3rem;">
+                <button id="load-more-btn" class="btn btn-primary">Voir plus de projets</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="cv" class="section cv-section">
+        <div class="container">
+            <div class="cv-container">
+                <div class="cv-text">
+                    <h2 class="section-title">Mon <span class="gradient-text">CV</span></h2>
+                    <p>Découvrez mon parcours professionnel, mes compétences et mes formations en détail. Téléchargez
+                        mon CV pour en savoir plus sur ce que je peux apporter à votre équipe.</p>
+                    <a href="CAYLA_Flavien_CV.pdf" target="_blank" class="btn btn-primary download-btn">
+                        <i class="fas fa-download"></i> Télécharger le CV
+                    </a>
+                </div>
+                <div class="cv-preview">
+                    <!-- Représentation visuelle abstraite du CV -->
+                    <div class="cv-card">
+                        <div class="cv-header">
+                            <div class="avatar-circle">FC</div>
+                            <div class="lines">
+                                <div class="line long"></div>
+                                <div class="line short"></div>
+                            </div>
+                        </div>
+                        <div class="cv-body">
+                            <div class="block"></div>
+                            <div class="block"></div>
+                            <div class="block"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Flavien CAYLA</div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/flavien-cayla-9aa9b92a9" target="_blank"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="#" onclick="showContact('flactori@gmail.com'); return false;"><i
+                            class="fas fa-envelope"></i></a>
+                    <a href="#" onclick="showContact('06 47 38 80 89'); return false;"><i class="fas fa-phone"></i></a>
+                </div>
+                <p class="copyright">&copy; 2026 Flavien CAYLA. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
