@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ember Beer - Flavien CAYLA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #ef4444;
+            /* Red */
+            --secondary-color: #f59e0b;
+            /* Amber */
+            --accent-color: #b91c1c;
+            /* Dark Red */
+            --bg-color: #1a0505;
+            /* Dark Red/Black bg */
+        }
+
+        .project-details {
+            padding-top: 120px;
+        }
+
+        .project-hero {
+            position: relative;
+            height: 60vh;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .project-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        body {
+            animation: revealHeat 1.2s ease-out forwards;
+        }
+
+        /* Pinterest Layout for Gallery */
+        .gallery {
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                column-count: 1;
+            }
+        }
+
+        .gallery img {
+            width: 100%;
+            margin-bottom: 1.5rem;
+            break-inside: avoid;
+            border-radius: 15px;
+            border: 1px solid var(--card-border);
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            color: var(--primary-color);
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .project-info {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+        <div class="globe globe-3"></div>
+    </div>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo" style="text-decoration: none;"><span class="logo-f">F</span>C.</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#projects">Projets</a></li>
+            <li><a href="index.html#cv">CV</a></li>
+            <li><a href="index.html#contact" class="btn-contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="section project-details">
+        <div class="container">
+            <a href="index.html#projects" class="back-btn"><i class="fas fa-arrow-left"></i> Retour aux projets</a>
+
+            <div class="project-hero">
+                <img src="image/Capture d'écran 2026-01-16 220119.png" alt="Ember Beer Capture Site">
+            </div>
+
+            <div class="project-info">
+                <div>
+                    <h1 class="section-title" style="text-align: left; margin-bottom: 1rem;">Ember <span
+                            class="gradient-text">Beer</span></h1>
+                    <p class="subtitle" style="margin: 0 0 2rem 0; text-align: left; opacity: 1;">Une expérience
+                        digitale immersive.</p>
+
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+                        Ce projet est un travail universitaire réalisé en groupe. Notre objectif était de créer de A
+                        à Z
+                        une marque de bière aphrodisiaque, de son identité visuelle à sa stratégie de communication.
+                    </p>
+                    <p style="color: var(--text-muted);">
+                        Nous avons conçu le logo, défini la charte graphique et imaginé tout l'univers de marque
+                        autour
+                        de ce concept audacieux ("Ember"), en jouant sur des codes visuels sensuels et mystérieux.
+                    </p>
+                </div>
+                <div>
+                    <div class="project-card" style="padding: 2rem;">
+                        <h3 style="margin-bottom: 1rem;">Infos Projet</h3>
+                        <ul style="list-style: none; color: var(--text-muted); line-height: 2;">
+                            <li><strong>Rôle:</strong> Design & Développement</li>
+                            <li><strong>Stack:</strong> HTML, CSS, Javascript</li>
+                            <li><strong>Année:</strong> 2025</li>
+                        </ul>
+                        <div class="tags" style="margin-top: 1.5rem;">
+                            <span>UI/UX Design</span>
+                            <span>Branding</span>
+                            <span>Frontend</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 2rem;">Galerie du projet</h2>
+            <div class="gallery">
+                <img src="image/Capture d'écran 2026-01-16 220119.png" alt="Capture d'écran du site">
+                <img src="image/affiche ember.jpg" alt="Affiche Publicitaire">
+                <img src="image/imageEmber.png" alt="Visuel Ember Beer">
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Flavien CAYLA</div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/flavien-cayla-9aa9b92a9" target="_blank"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="#" onclick="showContact('flactori@gmail.com'); return false;"><i
+                            class="fas fa-envelope"></i></a>
+                    <a href="#" onclick="showContact('06 47 38 80 89'); return false;"><i class="fas fa-phone"></i></a>
+                </div>
+                <p class="copyright">&copy; 2026 Flavien CAYLA. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
