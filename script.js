@@ -208,26 +208,173 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
         observer.observe(el);
     });
-    // Load More Projects
-    const loadMoreBtn = document.getElementById('load-more-btn');
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', () => {
-            const hiddenProjects = document.querySelectorAll('.hidden-project');
-            hiddenProjects.forEach((project, index) => {
-                project.style.display = 'block';
-                // Add animation for appearance
-                project.style.opacity = '0';
-                project.style.transform = 'translateY(20px)';
+    // Project Category Filtering & "Voir tous / moins de projets"
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card[data-category]');
+    const seeAllContainer = document.getElementById('see-all-container');
+    const seeAllBtn = document.getElementById('see-all-projects-btn');
 
+    let isAllProjectsRevealed = false;
+
+    function updateSeeAllButton() {
+        if (!seeAllBtn) return;
+        if (isAllProjectsRevealed) {
+            seeAllBtn.classList.add('expanded');
+            seeAllBtn.innerHTML = '<i class="fas fa-chevron-up"></i> <span>Voir moins de projets</span>';
+        } else {
+            seeAllBtn.classList.remove('expanded');
+            seeAllBtn.innerHTML = '<i class="fas fa-chevron-down"></i> <span>Voir tous les projets</span>';
+        }
+    }
+
+    function applyProjectVisibility(filter = 'all') {
+        let visibleCount = 0;
+
+        projectCards.forEach((card) => {
+            const categories = card.getAttribute('data-category')?.toLowerCase().split(' ') || [];
+            const categoryMatches = filter === 'all' || categories.includes(filter.toLowerCase());
+
+            // If showing 'all' and user hasn't clicked "Voir tous les projets" yet, only show first 4
+            const shouldBeVisible = categoryMatches && (isAllProjectsRevealed || filter !== 'all' || visibleCount < 4);
+
+            if (shouldBeVisible) {
+                visibleCount++;
+                card.style.display = 'block';
+                requestAnimationFrame(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0) scale(1)';
+                });
+                card.querySelectorAll('video').forEach(v => {
+                    v.muted = true;
+                    v.play().catch(() => {});
+                });
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(15px) scale(0.96)';
                 setTimeout(() => {
-                    project.style.transition = 'all 0.6s ease';
-                    project.style.opacity = '1';
-                    project.style.transform = 'translateY(0)';
-                }, 50 + (index * 100));
-            });
+                    if (card.style.opacity === '0') {
+                        card.style.display = 'none';
+                        card.querySelectorAll('video').forEach(v => v.pause());
+                    }
+                }, 300);
+            }
+        });
 
-            // Hide button after clicking (or change text if you prefer toggle)
-            loadMoreBtn.style.display = 'none';
+        // Manage button container visibility and update text
+        if (seeAllContainer) {
+            if (filter === 'all' && projectCards.length > 4) {
+                seeAllContainer.style.display = 'block';
+                updateSeeAllButton();
+            } else {
+                seeAllContainer.style.display = 'none';
+            }
+        }
+    }
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const filter = btn.getAttribute('data-filter');
+            const isAlreadyActive = btn.classList.contains('active');
+
+            // If user clicks the already active button (and it's not 'all'), toggle it off -> go back to 'all'
+            if (isAlreadyActive && filter !== 'all') {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+                if (allBtn) allBtn.classList.add('active');
+                applyProjectVisibility('all');
+                return;
+            }
+
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            applyProjectVisibility(filter);
+        });
+    });
+
+    if (seeAllBtn) {
+        seeAllBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const activeFilter = document.querySelector('.filter-btn.active')?.getAttribute('data-filter') || 'all';
+
+            if (!isAllProjectsRevealed) {
+                // Expand: reveal all projects
+                isAllProjectsRevealed = true;
+                applyProjectVisibility(activeFilter);
+            } else {
+                // Collapse: back to initial 4 projects
+                isAllProjectsRevealed = false;
+                applyProjectVisibility(activeFilter);
+
+                // Smooth scroll back to top of projects section
+                const projectsSection = document.getElementById('projects');
+                if (projectsSection) {
+                    projectsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    }
+
+    // Initialize display with only the first 4 projects visible
+    applyProjectVisibility('all');
+
+    // Video Autoplay Initialization
+    document.querySelectorAll('video[autoplay]').forEach(v => {
+        v.muted = true;
+        v.playsInline = true;
+        const playPromise = v.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // If browser autoplay policy requires click, start on first click anywhere
+                document.addEventListener('click', () => {
+                    v.play().catch(() => {});
+                }, { once: true });
+            });
+        }
+    });
+
+    // Image Lightbox Modal
+    const lightboxModal = document.getElementById('image-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    if (lightboxModal && lightboxImg) {
+        document.querySelectorAll('.project-media-container img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxModal.classList.add('active');
+                lightboxImg.src = img.src;
+                const card = img.closest('.project-card');
+                const title = card ? card.querySelector('h3')?.textContent : '';
+                if (lightboxCaption) lightboxCaption.textContent = title || img.alt || '';
+            });
+        });
+
+        // CV Preview click to zoom
+        const cvWrapper = document.getElementById('cv-image-wrapper');
+        const cvImg = document.getElementById('cv-preview-img');
+        if (cvWrapper && cvImg) {
+            cvWrapper.addEventListener('click', () => {
+                lightboxModal.classList.add('active');
+                lightboxImg.src = cvImg.src;
+                if (lightboxCaption) lightboxCaption.textContent = 'Curriculum Vitae - Flavien CAYLA';
+            });
+        }
+
+        const closeLightbox = () => {
+            lightboxModal.classList.remove('active');
+        };
+
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+
+        lightboxModal.addEventListener('click', (e) => {
+            if (e.target === lightboxModal) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightboxModal.classList.contains('active')) {
+                closeLightbox();
+            }
         });
     }
 

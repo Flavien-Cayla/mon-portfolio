@@ -457,86 +457,255 @@ body.loaded {
     position: relative;
 }
 
-/* Projects Grid */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
+/* Projects Filter Bar */
+.projects-filter-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: -2rem;
+    margin-bottom: 3.5rem;
 }
 
-.project-card {
-    background: var(--card-bg);
+.filter-btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: 1.5rem;
-    transition: var(--transition);
+    color: var(--text-muted);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
     backdrop-filter: blur(10px);
 }
 
-.project-card:hover {
-    transform: translateY(-10px);
+.filter-btn:hover {
+    color: #ffffff;
+    background: rgba(168, 85, 247, 0.18);
     border-color: var(--primary-color);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
 }
 
-.project-image {
+.filter-btn.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.45);
+    transform: translateY(-2px);
+}
+
+.filter-btn i {
+    font-size: 0.95rem;
+}
+
+/* Projects Grid - Maximum 2 columns (Masonry / Natural heights) */
+.projects-grid {
+    column-count: 2;
+    column-gap: 2.5rem;
+}
+
+@media (max-width: 850px) {
+    .projects-grid {
+        column-count: 1;
+    }
+}
+
+.project-card {
+    break-inside: avoid;
+    margin-bottom: 2.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 1.6rem;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                border-color 0.3s ease, 
+                box-shadow 0.4s ease, 
+                opacity 0.35s ease;
+    backdrop-filter: blur(12px);
+    display: block;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 35px rgba(168, 85, 247, 0.25);
+}
+
+/* Project Media Container - Natural Dimensions & Zero Borders */
+.project-media-container {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: transparent;
+    margin-bottom: 1.2rem;
+    position: relative;
+    border: none;
+}
+
+.project-media-container img {
     width: 100%;
     height: auto;
-    border-radius: 15px;
-    margin-bottom: 1.5rem;
-    overflow: hidden;
+    max-height: none;
+    display: block;
+    cursor: zoom-in;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-card:hover .project-media-container img {
+    transform: scale(1.02);
+}
+
+.project-media-container iframe,
+.project-media-container video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: none;
+    display: block;
+    border-radius: 14px;
     background: #000;
 }
 
-.project-image img,
-.project-image video {
+.yt-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #f87171;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.yt-link:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+/* "Voir tous les projets" Button */
+.see-all-container {
+    text-align: center;
+    margin-top: 3.5rem;
+    position: relative;
+    z-index: 5;
+}
+
+.see-all-btn {
+    padding: 1.1rem 3rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: #ffffff;
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.45);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.see-all-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 40px rgba(168, 85, 247, 0.65);
+}
+
+.see-all-btn i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.see-all-btn:hover i {
+    transform: translateY(3px);
+}
+
+/* Expanded state ("Voir moins de projets") */
+.see-all-btn.expanded {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.25);
+}
+
+.see-all-btn.expanded:hover {
+    background: rgba(168, 85, 247, 0.2);
+    box-shadow: 0 8px 30px rgba(168, 85, 247, 0.45);
+}
+
+.see-all-btn.expanded:hover i {
+    transform: translateY(-3px);
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 10001;
+    left: 0;
+    top: 0;
     width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.94);
+    backdrop-filter: blur(15px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.placeholder-img {
-    width: 100%;
-    height: 200px;
-    /* Keep placeholder fixed if no image */
-    transition: transform 0.5s ease;
+.lightbox-modal.active {
+    display: flex;
+    opacity: 1;
 }
 
-/* Specific overrides for vertical images if needed, or let them allow auto height if we remove aspect-ratio.
-   User wants to "adapt to images". Best way is removing fixed constraints.
-*/
-.project-image {
-    height: auto;
-    /* Removing aspect-ratio to let image dictate shape if we want full adaptation, 
-       BUT for grid consistency often we want some uniformity. 
-       However "adapt to images" implies seeing the whole image.
-    */
-    aspect-ratio: auto;
-}
-
-.project-image img {
-    height: auto;
+.lightbox-content {
+    max-width: 90vw;
+    max-height: 85vh;
     object-fit: contain;
-    /* or just remove object-fit and let it flow */
-    width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(168, 85, 247, 0.3);
+    animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-
-.color-1 {
-    background: linear-gradient(45deg, #a855f7 0%, #d8b4fe 100%);
+@keyframes zoomIn {
+    from { transform: scale(0.85); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }
 
-.color-2 {
-    background: linear-gradient(120deg, #ec4899 0%, #f472b6 100%);
+.lightbox-caption {
+    margin-top: 1.2rem;
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-align: center;
 }
 
-.color-3 {
-    background: linear-gradient(120deg, #7c3aed 0%, #8b5cf6 100%);
+.lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 42px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    line-height: 1;
 }
 
-.project-card:hover .placeholder-img {
-    transform: scale(1.1);
+.lightbox-close:hover {
+    color: var(--primary-color);
+    transform: scale(1.15);
 }
 
 .project-content h3 {
@@ -649,62 +818,65 @@ body.loaded {
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.cv-card {
-    width: 250px;
-    height: 350px;
-    background: white;
-    border-radius: 10px;
-    padding: 1.5rem;
-    transform: rotate(5deg);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+.cv-image-wrapper {
     position: relative;
-    transition: var(--transition);
+    max-width: 320px;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: zoom-in;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(168, 85, 247, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    transform: rotate(2deg);
 }
 
-.cv-card:hover {
-    transform: rotate(0deg) scale(1.05);
+.cv-image-wrapper:hover {
+    transform: rotate(0deg) scale(1.04);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(168, 85, 247, 0.45);
+    border-color: rgba(168, 85, 247, 0.5);
 }
 
-.cv-header {
+.cv-preview-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    background: #ffffff;
+}
+
+.cv-zoom-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 7, 21, 0.65);
+    backdrop-filter: blur(2px);
     display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.avatar-circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #e2e8f0;
-    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #64748b;
-    font-weight: 700;
+    gap: 0.6rem;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.lines .line {
-    background: #e2e8f0;
-    height: 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
+.cv-zoom-overlay i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
 }
 
-.lines .long {
-    width: 120px;
+.cv-image-wrapper:hover .cv-zoom-overlay {
+    opacity: 1;
 }
 
-.lines .short {
-    width: 80px;
-}
-
-.cv-body .block {
-    background: #f1f5f9;
-    height: 60px;
-    border-radius: 8px;
-    margin-bottom: 1rem;
+.cv-image-wrapper:hover .cv-zoom-overlay i {
+    transform: scale(1.15);
 }
 
 /* Footer */
@@ -812,9 +984,10 @@ footer {
         text-align: center;
     }
 
-    .cv-card {
+    .cv-image-wrapper {
         margin-top: 2rem;
         transform: rotate(0deg);
+        max-width: 280px;
     }
 }
 
