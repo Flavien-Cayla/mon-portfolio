@@ -8,81 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #ef4444;
-            /* Red */
-            --secondary-color: #f59e0b;
-            /* Amber */
-            --accent-color: #b91c1c;
-            /* Dark Red */
-            --bg-color: #1a0505;
-            /* Dark Red/Black bg */
-        }
-
-        .project-details {
-            padding-top: 120px;
-        }
-
-        .project-hero {
-            position: relative;
-            height: 60vh;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 20px;
-            margin-bottom: 3rem;
-        }
-
-        .project-hero img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .project-info {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-        }
-
-        body {
-            animation: revealHeat 1.2s ease-out forwards;
-        }
-
-        /* Pinterest Layout for Gallery */
-        .gallery {
-            column-count: 3;
-            column-gap: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .gallery {
-                column-count: 1;
-            }
-        }
-
-        .gallery img {
-            width: 100%;
-            margin-bottom: 1.5rem;
-            break-inside: avoid;
-            border-radius: 15px;
-            border: 1px solid var(--card-border);
-            transition: var(--transition);
-        }
-
-        .back-btn:hover {
-            color: var(--primary-color);
-            transform: translateX(-5px);
-        }
-
-        @media (max-width: 768px) {
-            .project-info {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -95,62 +20,84 @@
     <nav class="navbar">
         <a href="index.html" class="logo" style="text-decoration: none;"><span class="logo-f">F</span>C.</a>
         <ul class="nav-links">
-            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#home">Accueil</a></li>
             <li><a href="index.html#projects">Projets</a></li>
             <li><a href="index.html#cv">CV</a></li>
             <li><a href="index.html#contact" class="btn-contact">Contact</a></li>
         </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
     </nav>
 
     <section class="section project-details">
         <div class="container">
             <a href="index.html#projects" class="back-btn"><i class="fas fa-arrow-left"></i> Retour aux projets</a>
 
-            <div class="project-hero">
-                <img src="image/Capture d'écran 2026-01-16 220119.png" alt="Ember Beer Capture Site">
+            <!-- Hero Image -->
+            <div class="project-hero image-hero">
+                <img src="image/affiche ember.jpg" alt="Affiche Publicitaire Ember Beer" class="lightbox-trigger" data-caption="Ember Beer - Affiche publicitaire officielle">
             </div>
 
-            <div class="project-info">
-                <div>
-                    <h1 class="section-title" style="text-align: left; margin-bottom: 1rem;">Ember <span
-                            class="gradient-text">Beer</span></h1>
-                    <p class="subtitle" style="margin: 0 0 2rem 0; text-align: left; opacity: 1;">Une expérience
-                        digitale immersive.</p>
+            <!-- Project Info -->
+            <div class="project-info-grid">
+                <div class="project-info-main">
+                    <h1>Ember <span class="gradient-text">Beer</span></h1>
+                    <div class="project-lead-subtitle">Identité Visuelle, Web Design & Campagne Print</div>
 
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
-                        Ce projet est un travail universitaire réalisé en groupe. Notre objectif était de créer de A
-                        à Z
-                        une marque de bière aphrodisiaque, de son identité visuelle à sa stratégie de communication.
+                    <p>
+                        Ce projet est un travail universitaire complet réalisé en équipe. Notre défi était d'imaginer, concevoir et déployer de A à Z l'univers d'une marque fictive de bière aphrodisiaque haut de gamme intitulée <strong>Ember Beer</strong>.
                     </p>
-                    <p style="color: var(--text-muted);">
-                        Nous avons conçu le logo, défini la charte graphique et imaginé tout l'univers de marque
-                        autour
-                        de ce concept audacieux ("Ember"), en jouant sur des codes visuels sensuels et mystérieux.
+                    <p>
+                        Nous avons défini l'ensemble de la stratégie de communication : création d'un logo percutant mêlant masque vénitien et flammes incandescentes, élaboration de la charte graphique et typographique, production d'affiches publicitaires percutantes, ainsi que conception et développement du site web immersif de la marque.
                     </p>
                 </div>
-                <div>
-                    <div class="project-card" style="padding: 2rem;">
-                        <h3 style="margin-bottom: 1rem;">Infos Projet</h3>
-                        <ul style="list-style: none; color: var(--text-muted); line-height: 2;">
-                            <li><strong>Rôle:</strong> Design & Développement</li>
-                            <li><strong>Stack:</strong> HTML, CSS, Javascript</li>
-                            <li><strong>Année:</strong> 2025</li>
-                        </ul>
-                        <div class="tags" style="margin-top: 1.5rem;">
-                            <span>UI/UX Design</span>
-                            <span>Branding</span>
-                            <span>Frontend</span>
+
+                <div class="project-sidebar-card">
+                    <h3><i class="fas fa-info-circle"></i> Fiche Projet</h3>
+                    <ul class="project-meta-list">
+                        <li><span>Catégorie</span> <strong>Branding & Digital</strong></li>
+                        <li><span>Logiciels & Stack</span> <strong>Photoshop, AI, Web</strong></li>
+                        <li><span>Cadre</span> <strong>Projet Universitaire</strong></li>
+                        <li><span>Année</span> <strong>2025</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Galerie Complète Ember -->
+            <div class="project-gallery-section">
+                <h2 class="project-gallery-title">Galerie complète du projet</h2>
+                <div class="project-gallery-grid">
+                    
+                    <div class="gallery-card">
+                        <img src="image/affiche ember.jpg" alt="Affiche Publicitaire Ember Beer" class="lightbox-trigger" data-caption="Affiche publicitaire Ember Beer">
+                        <div class="gallery-card-info">
+                            <h4>Affiche Publicitaire</h4>
+                            <p>Visuel print grand format mettant en scène la bouteille, ses reflets de flammes et l'ambiance nocturne envoûtante.</p>
                         </div>
                     </div>
+
+                    <div class="gallery-card">
+                        <img src="image/imageEmber.png" alt="Logo & Identité Visuelle Ember" class="lightbox-trigger" data-caption="Logotype & Identité visuelle Ember Beer">
+                        <div class="gallery-card-info">
+                            <h4>Logo & Identité Visuelle</h4>
+                            <p>Conception du logotype combinant typographie incandescente, masque vénitien stylisé et flammes mystérieuses.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-card">
+                        <img src="image/Capture d'écran 2026-01-16 220119.png" alt="Site Web Ember Beer" class="lightbox-trigger" data-caption="Maquette & interface du site web Ember Beer">
+                        <div class="gallery-card-info">
+                            <h4>Site Web Immersif</h4>
+                            <p>Conception de l'expérience interactive en ligne : interface sombre élégante, animations subtiles et présentation des produits.</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <h2 style="margin-bottom: 2rem;">Galerie du projet</h2>
-            <div class="gallery">
-                <img src="image/Capture d'écran 2026-01-16 220119.png" alt="Capture d'écran du site">
-                <img src="image/affiche ember.jpg" alt="Affiche Publicitaire">
-                <img src="image/imageEmber.png" alt="Visuel Ember Beer">
-            </div>
         </div>
     </section>
 
@@ -159,16 +106,28 @@
             <div class="footer-content">
                 <div class="footer-logo">Flavien CAYLA</div>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/flavien-cayla-9aa9b92a9" target="_blank"><i
-                            class="fab fa-linkedin"></i></a>
-                    <a href="#" onclick="showContact('flactori@gmail.com'); return false;"><i
-                            class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/flavien-cayla-9aa9b92a9" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" onclick="showContact('flactori@gmail.com'); return false;"><i class="fas fa-envelope"></i></a>
                     <a href="#" onclick="showContact('06 47 38 80 89'); return false;"><i class="fas fa-phone"></i></a>
                 </div>
                 <p class="copyright">&copy; 2026 Flavien CAYLA. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Image Lightbox Modal -->
+    <div id="image-lightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Agrandissement de l'image">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <!-- Contact Popup -->
+    <div id="contact-popup">
+        <i class="fas fa-info-circle"></i>
+        <span id="popup-text"></span>
+    </div>
+    <div class="popup-overlay" id="popup-overlay" onclick="closeContact()"></div>
 
     <script src="script.js"></script>
 </body>

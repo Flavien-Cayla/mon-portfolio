@@ -318,17 +318,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize display with only the first 4 projects visible
     applyProjectVisibility('all');
 
-    // Video Autoplay Initialization
-    document.querySelectorAll('video[autoplay]').forEach(v => {
-        v.muted = true;
-        v.playsInline = true;
-        const playPromise = v.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                // If browser autoplay policy requires click, start on first click anywhere
-                document.addEventListener('click', () => {
-                    v.play().catch(() => {});
-                }, { once: true });
+    // Project Cards Navigation
+    document.querySelectorAll('.project-card').forEach(card => {
+        const link = card.querySelector('a.project-details-btn, a.project-title-link, a.project-media-link');
+        if (link) {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a, button, video, audio, iframe')) return;
+                window.location.href = link.href;
             });
         }
     });
@@ -340,13 +336,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxClose = document.querySelector('.lightbox-close');
 
     if (lightboxModal && lightboxImg) {
-        document.querySelectorAll('.project-media-container img').forEach(img => {
-            img.addEventListener('click', () => {
-                lightboxModal.classList.add('active');
-                lightboxImg.src = img.src;
-                const card = img.closest('.project-card');
-                const title = card ? card.querySelector('h3')?.textContent : '';
-                if (lightboxCaption) lightboxCaption.textContent = title || img.alt || '';
+        const openLightboxForImg = (img) => {
+            lightboxModal.classList.add('active');
+            lightboxImg.src = img.src;
+            const caption = img.getAttribute('data-caption') || 
+                            img.closest('.gallery-card')?.querySelector('h4')?.textContent || 
+                            img.alt || '';
+            if (lightboxCaption) lightboxCaption.textContent = caption;
+        };
+
+        document.querySelectorAll('.gallery img, .gallery-card img, .project-hero.image-hero img, .lightbox-trigger').forEach(img => {
+            img.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openLightboxForImg(img);
             });
         });
 

@@ -580,12 +580,63 @@ body.loaded {
     font-size: 0.88rem;
     font-weight: 600;
     text-decoration: none;
-    margin-top: 0.8rem;
     transition: all 0.2s ease;
 }
 
 .yt-link:hover {
     color: #ffffff;
+    transform: translateX(4px);
+}
+
+.project-title-link {
+    color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.project-card:hover .project-title-link {
+    color: var(--primary-color);
+}
+
+.project-media-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.project-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.project-details-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.project-details-btn i {
+    font-size: 0.85rem;
+    transition: transform 0.2s ease;
+}
+
+.project-card:hover .project-details-btn {
+    color: #ffffff;
+}
+
+.project-card:hover .project-details-btn i {
     transform: translateX(4px);
 }
 
@@ -1136,4 +1187,229 @@ footer {
 .popup-overlay.active {
     opacity: 1;
     visibility: visible;
+}
+
+/* ==================== PROJECT DETAIL PAGES ==================== */
+.project-details {
+    padding-top: 130px;
+    padding-bottom: 5rem;
+    min-height: calc(100vh - 150px);
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 2.2rem;
+    padding: 0.6rem 1.4rem;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateX(-5px);
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.25);
+}
+
+.project-hero {
+    position: relative;
+    width: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 3.5rem;
+    background: rgba(15, 7, 21, 0.6);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+.project-hero img {
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.project-hero video,
+.project-hero iframe {
+    width: 100%;
+    max-height: 80vh;
+    aspect-ratio: 16 / 9;
+    display: block;
+    background: #000;
+    border: none;
+    border-radius: 20px;
+}
+
+.project-info-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3.5rem;
+    margin-bottom: 4rem;
+}
+
+@media (max-width: 900px) {
+    .project-info-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+.project-info-main h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.project-info-main .project-lead-subtitle {
+    font-size: 1.15rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin-bottom: 1.8rem;
+}
+
+.project-info-main p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.4rem;
+}
+
+.project-sidebar-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2.2rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    height: fit-content;
+}
+
+.project-sidebar-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.2rem;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.project-meta-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+}
+
+.project-meta-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.project-meta-list li strong {
+    color: var(--text-main);
+}
+
+.project-gallery-section {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.project-gallery-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.project-gallery-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 2px;
+}
+
+.project-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    align-items: start;
+}
+
+.gallery-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 35px rgba(168, 85, 247, 0.3);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.35);
+    display: block;
+    cursor: zoom-in;
+    transition: transform 0.4s ease;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.02);
+}
+
+.gallery-card-info {
+    padding: 1.4rem;
+}
+
+.gallery-card-badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--secondary-color);
+    margin-bottom: 0.4rem;
+}
+
+.gallery-card-info h4 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.gallery-card-info p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin: 0;
 }
